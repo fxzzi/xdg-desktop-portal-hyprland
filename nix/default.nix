@@ -30,7 +30,10 @@ stdenv.mkDerivation {
   pname = "xdg-desktop-portal-hyprland" + lib.optionalString debug "-debug";
   inherit version;
 
-  inherit src;
+  src = builtins.path {
+    path = src;
+    name = "source";
+  };
 
   depsBuildBuild = [
     pkg-config
